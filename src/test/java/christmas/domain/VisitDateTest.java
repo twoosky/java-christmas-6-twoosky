@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.utils.ErrorMessages.INVALID_DATE;
 
+import java.time.DayOfWeek;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -23,16 +24,14 @@ public class VisitDateTest {
     }
 
     @Test
-    void 숫자가_아닌_날짜가_입력되면_예외를_던진다() {
+    void 날짜에_대한_요일을_계산한다() {
         // given
-        String 입력_날짜 = "a";
+        int 날짜 = 9;
 
         // when
-        InputView 입력_뷰 = new InputView();
+        DayOfWeek 요일 = new VisitDate(날짜).getDayOfWeek();
 
         // then
-        Assertions.assertThatThrownBy(() -> 입력_뷰.readDate(입력_날짜))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_DATE);
+        Assertions.assertThat(요일, DayOfWeek.SATURDAY);
     }
 }
