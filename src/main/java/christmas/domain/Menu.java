@@ -1,8 +1,8 @@
 package christmas.domain;
 
 import static christmas.domain.MenuType.APPETIZER;
-import static christmas.domain.MenuType.BEVERAGE;
 import static christmas.domain.MenuType.DESSERT;
+import static christmas.domain.MenuType.DRINK;
 import static christmas.domain.MenuType.MAIN;
 
 import christmas.utils.InvalidOrderException;
@@ -21,9 +21,9 @@ public enum Menu {
     CHOCOLATE_CAKE("초코케이크", 15000, DESSERT),
     ICE_CREAM("아이스크림", 5000, DESSERT),
 
-    ZERO_COLA("제로콜라", 3000, BEVERAGE),
-    RED_WINE("레드와인", 60000, BEVERAGE),
-    CHAMPAGNE("샴페인", 25000, BEVERAGE);
+    ZERO_COLA("제로콜라", 3000, DRINK),
+    RED_WINE("레드와인", 60000, DRINK),
+    CHAMPAGNE("샴페인", 25000, DRINK);
 
     private final String name;
     private final int price;
@@ -40,6 +40,10 @@ public enum Menu {
                 .filter(menu -> menuName.equals(menu.name))
                 .findFirst()
                 .orElseThrow(InvalidOrderException::new);
+    }
+
+    public boolean isDrinkMenu() {
+        return this.type == DRINK;
     }
 }
 

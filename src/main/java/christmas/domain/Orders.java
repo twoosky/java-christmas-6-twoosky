@@ -68,5 +68,14 @@ public class Orders {
                 .count();
     }
 
+    private void validateAllDrink() {
+        if (isAllDrinkMenu()) {
+            throw new InvalidOrderException();
+        }
+    }
 
+    private boolean isAllDrinkMenu() {
+        return orders.stream()
+                .allMatch(Order::isDrinkOrder);
+    }
 }

@@ -27,7 +27,15 @@ public class Order {
         }
     }
 
+    public boolean isDrinkOrder() {
+        return menu.isDrinkMenu();
+    }
+
     public int getQuantity() {
         return quantity;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }
