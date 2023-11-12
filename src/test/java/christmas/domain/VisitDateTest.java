@@ -21,4 +21,18 @@ public class VisitDateTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_DATE);
     }
+
+    @Test
+    void 숫자가_아닌_날짜가_입력되면_예외를_던진다() {
+        // given
+        String 입력_날짜 = "a";
+
+        // when
+        InputView 입력_뷰 = new InputView();
+
+        // then
+        Assertions.assertThatThrownBy(() -> 입력_뷰.readDate(입력_날짜))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_DATE);
+    }
 }
