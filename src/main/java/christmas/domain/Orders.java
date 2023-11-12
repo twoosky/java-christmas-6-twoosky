@@ -55,5 +55,18 @@ public class Orders {
                 .sum();
     }
 
+    private void validateDuplicate() {
+        if (countUniqueOrderMenu() != orders.size()) {
+            throw new InvalidOrderException();
+        }
+    }
+
+    private int countUniqueOrderMenu() {
+        return (int) orders.stream()
+                .map(Order::getMenu)
+                .distinct()
+                .count();
+    }
+
 
 }
