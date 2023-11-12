@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Order 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -22,14 +24,12 @@ public class OrderTest {
                 .hasMessageContaining(INVALID_ORDER);
     }
 
-    @Test
-    void 메뉴의_주문개수가_숫자가_아닌_경우_예외를_던진다() {
-        // given
-        String 입력_메뉴 = "곱창";
-        String 주문_개수 = "a";
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "ab!", "a1%^*"})
+    void 메뉴의_주문개수가_숫자가_아닌_경우_예외를_던진다(String orderQuantity) {
+        String inputManu = "시저샐러드";
 
-        // when & then
-        Assertions.assertThatThrownBy(() -> new Order(입력_메뉴, 주문_개수))
+        Assertions.assertThatThrownBy(() -> new Order(inputManu, orderQuantity))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_ORDER);
     }
