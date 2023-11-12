@@ -44,4 +44,14 @@ public class OrdersTest {
                 .hasMessageContaining(INVALID_ORDER);
     }
 
+    @Test
+    void 초과_주문한_경우_예외를_던진다() {
+        // given
+        String 초과_주문_입력 = "시저샐러드-4,티본스테이크-4,크리스마스파스타-3,제로콜라-6,아이스크림-4";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> new Orders(초과_주문_입력))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_ORDER);
+    }
 }
