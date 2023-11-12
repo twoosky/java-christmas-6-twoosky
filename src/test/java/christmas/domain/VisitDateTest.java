@@ -1,14 +1,18 @@
 package christmas.domain;
 
 import static christmas.utils.ErrorMessages.INVALID_DATE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.DayOfWeek;
+import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("VisitDate 클래스")
@@ -23,15 +27,20 @@ public class VisitDateTest {
                 .hasMessageContaining(INVALID_DATE);
     }
 
-    @Test
-    void 날짜에_대한_요일을_계산한다() {
-        // given
-        int 날짜 = 9;
+    @ParameterizedTest
+    @MethodSource("provideDateAndDayOfWeek")
+    void 날짜에_대한_요일을_계산한다(int date, DayOfWeek expect) {
+        DayOfWeek dayOfWeek = new VisitDate(date).getDayOfWeek();
 
-        // when
-        DayOfWeek 요일 = new VisitDate(날짜).getDayOfWeek();
+        assertEquals(dayOfWeek, expect);
+    }
 
-        // then
-        Assertions.assertThat(요일, DayOfWeek.SATURDAY);
+    private static Stream<Arguments> provideDateAndDayOfWeek() {
+        return Stream.of(
+                Arguments.of(1, DayOfWeek.FRIDAY),
+                Arguments.of(9, DayOfWeek.SATURDAY),
+                Arguments.of(25, DayOfWeek.MONDAY),
+                Arguments.of(31, DayOfWeek.SUNDAY)
+        );
     }
 }
