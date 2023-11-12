@@ -3,18 +3,21 @@ package christmas.domain;
 import static christmas.utils.ErrorMessages.INVALID_ORDER;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Order 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class OrderTest {
 
     @Test
     void 메뉴판에_없는_메뉴를_주문한_경우_예외를_던진다() {
-        // given
-        String 입력한_메뉴 = "뇨끼";
-        int 주문_개수 = 1;
+        String inputMenu = "곱창";
+        int orderQuantity = 1;
 
-        // when & then
-        Assertions.assertThatThrownBy(() -> 주문_생성_요청(입력한_메뉴, 주문_개수))
+        Assertions.assertThatThrownBy(() -> new Order(inputMenu, orderQuantity))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_ORDER);
     }
