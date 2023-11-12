@@ -28,11 +28,6 @@ public class Orders {
         }
     }
 
-    private Stream<String[]> getOrdersStream(String value) {
-        return Arrays.stream(value.split(ORDER_DELIMITER))
-                .map(order -> order.split(MENU_AND_QUANTITY_DELIMITER));
-    }
-
     private boolean isInvalidFormat(String value) {
         return getOrdersStream(value)
                 .anyMatch(order -> order.length != 2);
@@ -54,5 +49,10 @@ public class Orders {
         return orders.stream()
                 .mapToInt(Order::getQuantity)
                 .sum();
+    }
+
+    private Stream<String[]> getOrdersStream(String value) {
+        return Arrays.stream(value.split(ORDER_DELIMITER))
+                .map(order -> order.split(MENU_AND_QUANTITY_DELIMITER));
     }
 }

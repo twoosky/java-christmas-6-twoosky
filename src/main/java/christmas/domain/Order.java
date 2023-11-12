@@ -12,19 +12,22 @@ public class Order {
 
     public Order(String menuName, String quantity) {
         this.menu = Menu.from(menuName);
-
-        validateMinQuantity(quantity);
         this.quantity = convertType(quantity);
+
+        validateMinQuantity();
     }
 
     private int convertType(String quantity) {
         return IntegerConverter.convert(quantity, INVALID_ORDER);
     }
 
-    private void validateMinQuantity(String value) {
-        int quantity = convertType(value);
+    private void validateMinQuantity() {
         if (quantity < MIN_ORDER_QUANTITY) {
             throw new InvalidOrderException();
         }
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
