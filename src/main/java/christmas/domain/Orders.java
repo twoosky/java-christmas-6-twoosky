@@ -1,8 +1,5 @@
 package christmas.domain;
 
-import static christmas.utils.ErrorMessages.INVALID_ORDER;
-
-import christmas.utils.IntegerConverter;
 import christmas.utils.InvalidOrderException;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +17,14 @@ public class Orders {
         this.orders = createOrders(orders);
 
         validateOverQuantity();
+        validateDuplicate();
+        validateAllDrink();
+    }
+
+    private List<Order> createOrders(String value) {
+        return getOrdersStream(value)
+                .map(order -> new Order(order[0], order[1]))
+                .toList();
     }
 
     private void validateFormat(String value) {
@@ -33,10 +38,9 @@ public class Orders {
                 .anyMatch(order -> order.length != 2);
     }
 
-    private List<Order> createOrders(String value) {
-        return getOrdersStream(value)
-                .map(order -> new Order(order[0], order[1]))
-                .toList();
+    private Stream<String[]> getOrdersStream(String value) {
+        return Arrays.stream(value.split(ORDER_DELIMITER))
+                .map(order -> order.split(MENU_AND_QUANTITY_DELIMITER));
     }
 
     private void validateOverQuantity() {
@@ -51,8 +55,5 @@ public class Orders {
                 .sum();
     }
 
-    private Stream<String[]> getOrdersStream(String value) {
-        return Arrays.stream(value.split(ORDER_DELIMITER))
-                .map(order -> order.split(MENU_AND_QUANTITY_DELIMITER));
-    }
+
 }
