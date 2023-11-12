@@ -33,4 +33,14 @@ public class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_ORDER);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-10", "0"})
+    void 메뉴_주문개수가_1보다_작은_경우_예외를_던진다(String orderQuantity) {
+        String inputMenu = "크리스마스파스타";
+
+        Assertions.assertThatThrownBy(() -> new Order(inputMenu, orderQuantity))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_ORDER);
+    }
 }
