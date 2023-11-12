@@ -7,6 +7,7 @@ import christmas.utils.InvalidOrderException;
 
 public class Order {
     public static final int MIN_ORDER_QUANTITY = 1;
+
     private final Menu menu;
     private final int quantity;
 
