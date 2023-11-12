@@ -25,11 +25,23 @@ public class OrdersTest {
     @Test
     void 중복메뉴를_입력한_경우_예외를_던진다() {
         // given
-        String 중복_주문_메뉴 = "시저샐러드-1,시저샐러드-2";
+        String 중복_주문_입력 = "시저샐러드-1,시저샐러드-2";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> new Orders(중복_주문_메뉴))
+        Assertions.assertThatThrownBy(() -> new Orders(중복_주문_입력))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_ORDER);
     }
+
+    @Test
+    void 음료만_주문한_경우_예외를_던진다() {
+        // given
+        String 음료_주문_입력 = "제로콜라-2,레드와인-1";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> new Orders(음료_주문_입력))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_ORDER);
+    }
+
 }
