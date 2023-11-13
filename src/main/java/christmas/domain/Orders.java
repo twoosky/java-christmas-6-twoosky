@@ -79,13 +79,13 @@ public class Orders {
                 .allMatch(order -> order.isEqualsMenuType(MenuType.DRINK));
     }
 
-    public int calculateTotalPrice() {
+    public int getTotalPrice() {
         return orders.stream()
                 .mapToInt(Order::calculatePrice)
                 .sum();
     }
 
-    public int calculateTotalQuantityByMenuType(MenuType type) {
+    public int getQuantityByMenuType(MenuType type) {
         return orders.stream()
                 .filter(order -> order.isEqualsMenuType(type))
                 .mapToInt(Order::getQuantity)

@@ -57,7 +57,7 @@ public class OrdersTest {
     void 총_주문금액을_계산한다(String 주문, int 예상_총_주문금액) {
         Orders orders = new Orders(주문);
 
-        int 총_주문금액 = orders.calculateTotalPrice();
+        int 총_주문금액 = orders.getTotalPrice();
 
         assertEquals(총_주문금액, 예상_총_주문금액);
     }
@@ -67,7 +67,7 @@ public class OrdersTest {
     void 메뉴타입과_일치하는_주문의_총_개수를_계산한다(String 주문, MenuType 메뉴_타입, int 예상_주문개수) {
         Orders orders = new Orders(주문);
 
-        int 주문개수 = orders.calculateTotalQuantityByMenuType(메뉴_타입);
+        int 주문개수 = orders.getQuantityByMenuType(메뉴_타입);
 
         assertEquals(주문개수, 예상_주문개수);
     }

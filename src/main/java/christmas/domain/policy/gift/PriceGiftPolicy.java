@@ -15,7 +15,7 @@ public class PriceGiftPolicy implements GiftPolicy {
     }
 
     private boolean canGive(Orders orders) {
-        int totalOrderPrice = orders.calculateTotalPrice();
+        int totalOrderPrice = orders.getTotalPrice();
         return totalOrderPrice >= MINIMUM_GIFT_PRICE;
     }
 }
