@@ -58,4 +58,14 @@ public class OrdersTest {
 
         assertEquals(총_주문금액, 예상_총_주문금액);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"티본스테이크-1,초코케이크-2,레드와인-1:2", "크리스마스파스타-2,제로콜라-2:0"}, delimiter = ':')
+    void 디저트_주문의_총_개수를_계산한다(String 주문, int 예상_디저트_주문개수) {
+        Orders orders = new Orders(주문);
+
+        int 디저트_주문개수 = orders.sumDesertOrderQuantity();
+
+        assertEquals(디저트_주문개수, 예상_디저트_주문개수);
+    }
 }
