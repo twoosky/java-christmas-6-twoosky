@@ -19,6 +19,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -67,5 +68,15 @@ public class VisitDateTest {
                 Arguments.of(List.of(SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY), 25, true),
                 Arguments.of(List.of(FRIDAY, SATURDAY), 30, true)
         );
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"17:25:false", "25:25:true"}, delimiter = ':')
+    void 방문_날짜_일치_여부를_반환한다(int 방문_날짜, int 비교_날짜, boolean 예상_일치_여부) {
+        VisitDate visitDate = new VisitDate(방문_날짜);
+
+        boolean 일치_여부 = visitDate.isEqualsDate(비교_날짜);
+
+        assertEquals(일치_여부, 예상_일치_여부);
     }
 }
