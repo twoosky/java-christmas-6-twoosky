@@ -4,7 +4,7 @@ import christmas.domain.GiftType;
 import christmas.domain.Orders;
 
 public class PriceGiftPolicy implements GiftPolicy {
-    public static final int MINIMUM_GIFT_PRICE = 12_000;
+    public static final int MINIMUM_GIFT_PRICE = 120_000;
     public static final GiftType GIFT = GiftType.CHAMPAGNE;
     public static final GiftType NONE_GIFT = GiftType.NONE;
 
