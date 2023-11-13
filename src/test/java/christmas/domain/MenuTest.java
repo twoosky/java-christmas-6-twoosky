@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-@DisplayName("Menu 클래스")
+@DisplayName("Menu Enum")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class MenuTest {
 
