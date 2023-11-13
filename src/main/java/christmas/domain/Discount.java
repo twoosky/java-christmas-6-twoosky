@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.domain.policy.DiscountPolicy;
+import christmas.domain.policy.discount.DiscountPolicy;
 
 public class Discount {
     private final DiscountType type;

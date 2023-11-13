@@ -5,11 +5,11 @@ import static christmas.domain.DiscountType.SPECIAL;
 import static christmas.domain.DiscountType.WEEKDAY;
 import static christmas.domain.DiscountType.WEEKEND;
 
-import christmas.domain.policy.DdayDiscountPolicy;
-import christmas.domain.policy.DiscountPolicy;
-import christmas.domain.policy.SpecialDiscountPolicy;
-import christmas.domain.policy.WeekdayDiscountPolicy;
-import christmas.domain.policy.WeekendDiscountPolicy;
+import christmas.domain.policy.discount.DdayDiscountPolicy;
+import christmas.domain.policy.discount.DiscountPolicy;
+import christmas.domain.policy.discount.SpecialDiscountPolicy;
+import christmas.domain.policy.discount.WeekdayDiscountPolicy;
+import christmas.domain.policy.discount.WeekendDiscountPolicy;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

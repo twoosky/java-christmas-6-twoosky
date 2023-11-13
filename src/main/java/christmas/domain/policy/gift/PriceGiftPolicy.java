@@ -1,4 +1,4 @@
-package christmas.domain.policy;
+package christmas.domain.policy.gift;
 
 import christmas.domain.Orders;
 

@@ -2,7 +2,7 @@ package christmas.domain;
 
 import static christmas.domain.GiftType.NONE;
 
-import christmas.domain.policy.GiftPolicy;
+import christmas.domain.policy.gift.GiftPolicy;
 
 public class Gift {
     public static final GiftType NONE_GIFT = NONE;

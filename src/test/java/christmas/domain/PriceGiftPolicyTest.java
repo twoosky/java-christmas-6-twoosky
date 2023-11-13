@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.policy.GiftPolicy;
-import christmas.domain.policy.PriceGiftPolicy;
+import christmas.domain.policy.gift.GiftPolicy;
+import christmas.domain.policy.gift.PriceGiftPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

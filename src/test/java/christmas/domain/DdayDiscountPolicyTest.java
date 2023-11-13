@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.policy.DdayDiscountPolicy;
-import christmas.domain.policy.DiscountPolicy;
+import christmas.domain.policy.discount.DdayDiscountPolicy;
+import christmas.domain.policy.discount.DiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;

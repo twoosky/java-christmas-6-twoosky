@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.policy.DiscountPolicy;
-import christmas.domain.policy.WeekdayDiscountPolicy;
+import christmas.domain.policy.discount.DiscountPolicy;
+import christmas.domain.policy.discount.WeekdayDiscountPolicy;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

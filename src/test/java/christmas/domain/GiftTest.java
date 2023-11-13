@@ -3,14 +3,13 @@ package christmas.domain;
 import static christmas.domain.GiftType.CHAMPAGNE;
 import static christmas.domain.GiftType.NONE;
 
-import christmas.domain.policy.GiftPolicy;
-import christmas.domain.policy.PriceGiftPolicy;
+import christmas.domain.policy.gift.GiftPolicy;
+import christmas.domain.policy.gift.PriceGiftPolicy;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

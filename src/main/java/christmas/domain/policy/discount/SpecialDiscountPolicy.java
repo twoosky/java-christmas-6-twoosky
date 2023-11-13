@@ -1,4 +1,4 @@
-package christmas.domain.policy;
+package christmas.domain.policy.discount;
 
 import static java.time.DayOfWeek.SUNDAY;
 
