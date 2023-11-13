@@ -37,8 +37,8 @@ public class WeekdayDiscountPolicyTest {
 
     @ParameterizedTest
     @CsvSource(value = {"해산물파스타-2,시저샐러드-1:3:0", "바비큐립-1,샴페인-1:25:0"}, delimiter = ':')
-    void 디저트_메뉴를_주문하지_않은_경우_할인하지_않는다(String 디저트없이_주문, int 주말_방문_날짜, int 예상_할인금액) {
-        VisitDate visitDate = new VisitDate(주말_방문_날짜);
+    void 디저트_메뉴를_주문하지_않은_경우_할인하지_않는다(String 디저트없이_주문, int 방문_날짜, int 예상_할인금액) {
+        VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(디저트없이_주문);
         WeekdayDiscountPolicy weekdayDiscountPolicy = new WeekdayDiscountPolicy();
 
