@@ -55,4 +55,24 @@ public class OrderTest {
 
         assertEquals(주문금액, 예상_주문금액);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"초코케이크:1:true", "아이스크림:2:true", "타파스:1:false"}, delimiter = ':')
+    void 디저트_주문여부를_반환한다(String 주문_메뉴, String 주문_개수, boolean 예상_디저트_여부) {
+        Order order = new Order(주문_메뉴, 주문_개수);
+
+        boolean 디저트_여부 = order.isDesertOrder();
+
+        assertEquals(디저트_여부, 예상_디저트_여부);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"레드와인:1:true", "제로콜라:2:true", "크리스마스파스타:1:false"}, delimiter = ':')
+    void 음료_주문여부를_반환한다(String 주문_메뉴, String 주문_개수, boolean 예상_음료_여부) {
+        Order order = new Order(주문_메뉴, 주문_개수);
+
+        boolean 음료_여부 = order.isDrinkOrder();
+
+        assertEquals(음료_여부, 예상_음료_여부);
+    }
 }
