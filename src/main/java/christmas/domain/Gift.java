@@ -1,12 +1,8 @@
 package christmas.domain;
 
-import static christmas.domain.GiftType.NONE;
-
 import christmas.domain.policy.gift.GiftPolicy;
 
 public class Gift {
-    public static final GiftType NONE_GIFT = NONE;
-
     private final GiftType type;
     private final GiftPolicy policy;
 
@@ -15,10 +11,11 @@ public class Gift {
         this.policy = policy;
     }
 
-    public GiftType give(Orders orders) {
-        if (policy.canGive(orders)) {
-            return type;
-        }
-        return NONE_GIFT;
+    public int calculatePrice(Orders orders) {
+        return type.getPrice() * getQuantity(orders);
+    }
+
+    private int getQuantity(Orders orders) {
+        return policy.calculateGiftQuantity(orders);
     }
 }
