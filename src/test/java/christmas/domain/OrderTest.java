@@ -61,7 +61,7 @@ public class OrderTest {
 
     @ParameterizedTest
     @MethodSource("주문메뉴_주문개수_메뉴타입_예상일치여부_제공")
-    void 메뉴_타입과_일치하는_주문여부를_반환한다(String 주문_메뉴, String 주문_개수, MenuType 메뉴_타입, boolean 예상_일치_여부) {
+    void 메뉴_타입에_따른_주문_일치여부를_반환한다(String 주문_메뉴, String 주문_개수, MenuType 메뉴_타입, boolean 예상_일치_여부) {
         Order order = new Order(주문_메뉴, 주문_개수);
 
         boolean 일치_여부 = order.isEqualsMenuType(메뉴_타입);
