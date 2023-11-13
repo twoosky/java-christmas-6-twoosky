@@ -6,19 +6,15 @@ import static christmas.domain.DiscountType.WEEKDAY;
 import static christmas.domain.DiscountType.WEEKEND;
 
 import christmas.domain.policy.discount.DdayDiscountPolicy;
-import christmas.domain.policy.discount.DiscountPolicy;
 import christmas.domain.policy.discount.SpecialDiscountPolicy;
 import christmas.domain.policy.discount.WeekdayDiscountPolicy;
 import christmas.domain.policy.discount.WeekendDiscountPolicy;
 import java.util.List;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Discounts 클래스")
