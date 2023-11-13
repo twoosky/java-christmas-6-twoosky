@@ -17,32 +17,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Event 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class EventTest {
 
-    /**
-     * GIVEN 모든 이벤트를 생성한다.
-     *       방문 날짜 및 주문을 입력받는다.
-     * WHEN  각 이벤트에 대한 할인/증정 금액의 총합을 계산한다.
-     * THEN  혜택 금액의 총합을 비교한다.
-     */
-    @Test
-    void 모든_이벤트에_대한_혜택_금액_총합을_계산한다() {
-        // given
-        String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
-        VisitDate 방문_날짜 = new VisitDate(10);
-        Orders 주문_목록 = new Orders(주문);
-        Discounts 할인_목록 = new Discounts(할인정책에_따른_할인객체_리스트_생성());
-        Gifts 증정_목록 = new Gifts(증정정책에_따른_증정객체_리스트_생성());
-        이벤트_객체_생성(할인_목록, 증정_목록);
+    @ParameterizedTest
+    @CsvSource(value = {"티본스테이크-2,레드와인-1,초코케이크-2:10:31946", "티본스테이크-1,바비큐립-1,해산물파스타-1:30:31069"}, delimiter = ':')
+    void 모든_이벤트에_대한_혜택_금액_총합을_계산한다(String 주문, int 방문_날짜, int 에상_혜택금액_총합) {
+        VisitDate visitDate = new VisitDate(방문_날짜);
+        Orders orders = new Orders(주문);
+        Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
+        Gifts gifts = new Gifts(증정정책에_따른_증정객체_리스트_생성());
+        Event event = new Event(discounts, gifts);
 
-        // when
-        int 혜택_금액_총합 = 이벤트_객체.혜택_금액_총합_계산();
+        int 혜택금액_총합 = event.sumBenefitsAmount(visitDate, orders);
 
-        // then
-        Assertions.assertEquals(혜택_금액_총합, 30_946);
+        Assertions.assertEquals(혜택금액_총합, 에상_혜택금액_총합);
     }
 
     private List<Discount> 할인정책에_따른_할인객체_리스트_생성() {
