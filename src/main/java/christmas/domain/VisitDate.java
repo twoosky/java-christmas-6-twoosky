@@ -33,4 +33,8 @@ public class VisitDate {
         DayOfWeek dayOfWeek = getDayOfWeek();
         return weekDay.contains(dayOfWeek);
     }
+
+    public boolean isEqualsDate(int date) {
+        return this.date == date;
+    }
 }
