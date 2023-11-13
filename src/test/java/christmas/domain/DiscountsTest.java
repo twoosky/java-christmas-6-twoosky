@@ -16,7 +16,6 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Discounts 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -33,18 +32,6 @@ public class DiscountsTest {
         int 할인금액_총합 = discounts.sumDiscount(visitDate, orders);
 
         Assertions.assertEquals(할인금액_총합, 예상_할인금액_총합);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"타파스-1,제로콜라-1", "제로콜라-1,아이스크림-1", "시저샐러드-1"})
-    void 총_주문금액이_10000원보다_작으면_할인하지_않는다(String 주문) {
-        VisitDate visitDate = new VisitDate(1);
-        Orders orders = new Orders(주문);
-        Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
-
-        int 할인금액_총합 = discounts.sumDiscount(visitDate, orders);
-
-        Assertions.assertEquals(할인금액_총합, 0);
     }
 
     private List<Discount> 할인정책에_따른_할인객체_리스트_생성() {

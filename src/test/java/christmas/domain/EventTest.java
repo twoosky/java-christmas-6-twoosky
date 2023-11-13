@@ -19,6 +19,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Event 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -78,5 +79,27 @@ public class EventTest {
         int 혜택금액_총합 = event.getPaymentAfterDiscount(visitDate, orders);
 
         Assertions.assertEquals(혜택금액_총합, 에상_결제금액);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"타파스-1,제로콜라-1", "제로콜라-1,아이스크림-1", "시저샐러드-1"})
+    void 총_주문금액이_10000원보다_작으면_혜택_금액으로_0을_반환한다(String 주문) {
+        VisitDate visitDate = new VisitDate(25);
+        Orders orders = new Orders(주문);
+
+        int 혜택금액_총합 = event.getTotalBenefit(visitDate, orders);
+
+        Assertions.assertEquals(혜택금액_총합, 0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"타파스-1,제로콜라-1", "제로콜라-1,아이스크림-1", "시저샐러드-1"})
+    void 총_주문금액이_10000원보다_작으면_할인_금액으로_0을_반환한다(String 주문) {
+        VisitDate visitDate = new VisitDate(25);
+        Orders orders = new Orders(주문);
+
+        int 혜택금액_총합 = event.getTotalDiscount(visitDate, orders);
+
+        Assertions.assertEquals(혜택금액_총합, 0);
     }
 }
