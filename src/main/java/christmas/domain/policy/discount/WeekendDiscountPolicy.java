@@ -27,7 +27,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     }
 
     private int calculateDiscount(Orders orders) {
-        int desertOrderQuantity = orders.sumOrderQuantityByMenuType(MenuType.MAIN);
+        int desertOrderQuantity = orders.calculateTotalQuantityByMenuType(MenuType.MAIN);
         return desertOrderQuantity * DISCOUNT_AMOUNT;
     }
 }

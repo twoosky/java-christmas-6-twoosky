@@ -54,7 +54,7 @@ public class OrderTest {
     void 주문금액을_계산한다(String 메뉴, String 주문_개수, int 예상_주문금액) {
         Order order = new Order(메뉴, 주문_개수);
 
-        int 주문금액 = order.calculateOrderPrice();
+        int 주문금액 = order.calculatePrice();
 
         assertEquals(주문금액, 예상_주문금액);
     }

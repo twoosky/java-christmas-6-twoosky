@@ -32,7 +32,7 @@ public class Order {
         return menu.isEqualsMenuType(type);
     }
 
-    public int calculateOrderPrice() {
+    public int calculatePrice() {
         return menu.calculatePrice(quantity);
     }
 
