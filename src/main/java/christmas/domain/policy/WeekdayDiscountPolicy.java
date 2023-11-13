@@ -15,21 +15,21 @@ import java.util.List;
 public class WeekdayDiscountPolicy implements DiscountPolicy {
     private static final List<DayOfWeek> WEEKDAY = List.of(SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY);
     public static final int DISCOUNT_AMOUNT = 2023;
-    public static final int DEFAULT_DISCOUNT_AMOUNT = 0;
+    public static final int NOT_DISCOUNT_AMOUNT = 0;
 
     @Override
     public int discount(VisitDate visitDate, Orders orders) {
         if (isWeekday(visitDate)) {
-            return calculateDiscountAmount(orders);
+            return calculateDiscount(orders);
         }
-        return DEFAULT_DISCOUNT_AMOUNT;
+        return NOT_DISCOUNT_AMOUNT;
     }
 
     private boolean isWeekday(VisitDate visitDate) {
         return visitDate.isContainDayOfDay(WEEKDAY);
     }
 
-    private int calculateDiscountAmount(Orders orders) {
+    private int calculateDiscount(Orders orders) {
         int desertOrderQuantity = orders.sumOrderQuantityByMenuType(MenuType.DESSERT);
         return desertOrderQuantity * DISCOUNT_AMOUNT;
     }
