@@ -17,7 +17,7 @@ public class WeekdayDiscountPolicyTest {
 
     @ParameterizedTest
     @MethodSource("주문_방문날짜_예상할인금액_제공")
-    void 월요일부터_목요일에_디저트메뉴를_개당_2023원_할인한다(String 주문, int 방문_날짜, int 예상_할인금액) {
+    void 일요일부터_목요일에_디저트메뉴를_개당_2023원_할인한다(String 주문, int 방문_날짜, int 예상_할인금액) {
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(주문);
         WeekdayDiscountPolicy weekdayDiscountPolicy = new WeekdayDiscountPolicy();
