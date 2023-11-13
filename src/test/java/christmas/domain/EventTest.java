@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,7 +32,21 @@ public class EventTest {
         Gifts gifts = new Gifts(증정정책에_따른_증정객체_리스트_생성());
         Event event = new Event(discounts, gifts);
 
-        int 혜택금액_총합 = event.sumBenefitsAmount(visitDate, orders);
+        int 혜택금액_총합 = event.getTotalBenefit(visitDate, orders);
+
+        Assertions.assertEquals(혜택금액_총합, 에상_혜택금액_총합);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"티본스테이크-2,레드와인-1,초코케이크-2:10:6946", "티본스테이크-1,바비큐립-1,해산물파스타-1:30:6069"}, delimiter = ':')
+    void 할인_이벤트에_대한_할인_금액_합계를_계산한다(String 주문, int 방문_날짜, int 에상_혜택금액_총합) {
+        VisitDate visitDate = new VisitDate(방문_날짜);
+        Orders orders = new Orders(주문);
+        Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
+        Gifts gifts = new Gifts(증정정책에_따른_증정객체_리스트_생성());
+        Event event = new Event(discounts, gifts);
+
+        int 혜택금액_총합 = event.getTotalDiscount(visitDate, orders);
 
         Assertions.assertEquals(혜택금액_총합, 에상_혜택금액_총합);
     }
