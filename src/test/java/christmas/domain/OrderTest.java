@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Order 클래스")
@@ -45,17 +46,13 @@ public class OrderTest {
                 .hasMessageContaining(INVALID_ORDER);
     }
 
-    @Test
-    void 주문금액을_계산한다() {
-        // given
-        String 메뉴 = "바비큐립";
-        String 주문_개수 = "3";
-        Order 주문 = new Order(메뉴, 주문_개수);
+    @ParameterizedTest
+    @CsvSource(value = {"바비큐립:3:162000", "해산물파스타:2:70000", "시저샐러드:1:8000"}, delimiter = ':')
+    void 주문금액을_계산한다(String 메뉴, String 주문_개수, int 예상_주문금액) {
+        Order order = new Order(메뉴, 주문_개수);
 
-        // when
-        int 주문금액 = 주문.주문금액_계산();
+        int 주문금액 = order.calculateOrderPrice();
 
-        // then
-        assertEquals(주문금액, 162000);
+        assertEquals(주문금액, 예상_주문금액);
     }
 }
