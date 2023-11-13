@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -49,6 +50,29 @@ public class EventTest {
         int 혜택금액_총합 = event.getTotalDiscount(visitDate, orders);
 
         Assertions.assertEquals(혜택금액_총합, 에상_혜택금액_총합);
+    }
+
+    /**
+     * GIVEN 모든 이벤트를 생성한다.
+     *       방문 날짜 및 주문을 입력받는다.
+     * WHEN  주문금액에 대한 할인 후 예상 결제 금액을 계산한다.
+     * THEN  예상 결제 금액을 비교한다.
+     */
+    @Test
+    void 할인_후_예상_결제금액을_계산한다() {
+        // given
+        String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
+        VisitDate 방문_날짜 = new VisitDate(10);
+        Orders 주문_목록 = new Orders(주문);
+        Discounts 할인_목록 = new Discounts(할인정책에_따른_할인객체_리스트_생성());
+        Gifts 증정_목록 = new Gifts(증정정책에_따른_증정객체_리스트_생성());
+        Event 이벤트_객체 = new Event(할인_목록, 증정_목록);
+
+        // when
+        int 결제_금액 = 이벤트_객체.할인_후_결제금액_계산(방문_날짜, 주문_목록);
+
+        // then
+        Assertions.assertEquals(결제_금액 , 197_054);
     }
 
     private List<Discount> 할인정책에_따른_할인객체_리스트_생성() {
