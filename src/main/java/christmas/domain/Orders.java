@@ -78,4 +78,10 @@ public class Orders {
         return orders.stream()
                 .allMatch(Order::isDrinkOrder);
     }
+
+    public int calculateTotalOrderPrice() {
+        return orders.stream()
+                .mapToInt(Order::calculateOrderPrice)
+                .sum();
+    }
 }
