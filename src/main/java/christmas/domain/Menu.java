@@ -42,12 +42,8 @@ public enum Menu {
                 .orElseThrow(InvalidOrderException::new);
     }
 
-    public boolean isDrinkMenu() {
-        return this.type == DRINK;
-    }
-
-    public boolean isDesertMenu() {
-        return this.type == DESSERT;
+    public boolean isEqualsMenuType(MenuType menuType) {
+        return this.type == menuType;
     }
 
     public int calculatePrice(int quantity) {

@@ -28,12 +28,8 @@ public class Order {
         }
     }
 
-    public boolean isDrinkOrder() {
-        return menu.isDrinkMenu();
-    }
-
-    public boolean isDesertOrder() {
-        return menu.isDesertMenu();
+    public boolean isEqualsMenuType(MenuType type) {
+        return menu.isEqualsMenuType(type);
     }
 
     public int calculateOrderPrice() {

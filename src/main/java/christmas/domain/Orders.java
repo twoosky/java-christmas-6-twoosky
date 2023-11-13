@@ -76,7 +76,7 @@ public class Orders {
 
     private boolean isAllDrinkMenu() {
         return orders.stream()
-                .allMatch(Order::isDrinkOrder);
+                .allMatch(order -> order.isEqualsMenuType(MenuType.DRINK));
     }
 
     public int calculateTotalOrderPrice() {
@@ -85,9 +85,9 @@ public class Orders {
                 .sum();
     }
 
-    public int sumDesertOrderQuantity() {
+    public int sumOrderQuantityByMenuType(MenuType type) {
         return orders.stream()
-                .filter(Order::isDesertOrder)
+                .filter(order -> order.isEqualsMenuType(type))
                 .mapToInt(Order::getQuantity)
                 .sum();
     }
