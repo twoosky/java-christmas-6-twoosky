@@ -21,7 +21,7 @@ public class GiftsTest {
         Orders orders = new Orders(주문);
         Gifts gifts = new Gifts(증정정책에_따른_증정객체_리스트_생성());
 
-        int 증정금액_총합 = gifts.calculateTotalPrice(orders);
+        int 증정금액_총합 = gifts.sumPrice(orders);
 
         Assertions.assertEquals(증정금액_총합, 예상_증정금액_총합);
     }

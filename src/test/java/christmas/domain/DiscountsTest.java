@@ -30,7 +30,7 @@ public class DiscountsTest {
         Orders orders = new Orders(주문);
         Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
 
-        int 할인금액_총합 = discounts.calculateTotalDiscount(visitDate, orders);
+        int 할인금액_총합 = discounts.sumDiscount(visitDate, orders);
 
         Assertions.assertEquals(할인금액_총합, 예상_할인금액_총합);
     }
@@ -42,7 +42,7 @@ public class DiscountsTest {
         Orders orders = new Orders(주문);
         Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
 
-        int 할인금액_총합 = discounts.calculateTotalDiscount(visitDate, orders);
+        int 할인금액_총합 = discounts.sumDiscount(visitDate, orders);
 
         Assertions.assertEquals(할인금액_총합, 0);
     }

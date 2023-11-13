@@ -9,7 +9,7 @@ public class Gifts {
         this.gifts = gifts;
     }
 
-    public int calculateTotalPrice(Orders orders) {
+    public int sumPrice(Orders orders) {
         return gifts.stream()
                 .mapToInt(gift -> gift.calculatePrice(orders))
                 .sum();
