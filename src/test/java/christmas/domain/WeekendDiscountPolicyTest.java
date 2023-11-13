@@ -1,6 +1,7 @@
 package christmas.domain;
 
 
+import christmas.domain.policy.DiscountPolicy;
 import christmas.domain.policy.WeekdayDiscountPolicy;
 import christmas.domain.policy.WeekendDiscountPolicy;
 import java.util.stream.Stream;
@@ -27,9 +28,9 @@ public class WeekendDiscountPolicyTest {
     void 금요일_토요일에_메인메뉴를_개당_2023원_할인한다(String 주문, int 방문_날짜, int 예상_할인금액) {
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(주문);
-        WeekendDiscountPolicy weekendDiscountPolicy = new WeekendDiscountPolicy();
+        DiscountPolicy discountPolicy = new WeekendDiscountPolicy();
 
-        int 할인_금액 = weekendDiscountPolicy.discount(visitDate, orders);
+        int 할인_금액 = discountPolicy.discount(visitDate, orders);
 
         Assertions.assertEquals(할인_금액, 예상_할인금액);
     }
@@ -47,9 +48,9 @@ public class WeekendDiscountPolicyTest {
     void 메인_메뉴를_주문하지_않은_경우_할인하지_않는다(String 메인없이_주문, int 방문_날짜, int 예상_할인금액) {
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(메인없이_주문);
-        WeekendDiscountPolicy weekendDiscountPolicy = new WeekendDiscountPolicy();
+        DiscountPolicy discountPolicy = new WeekendDiscountPolicy();
 
-        int 할인_금액 = weekendDiscountPolicy.discount(visitDate, orders);
+        int 할인_금액 = discountPolicy.discount(visitDate, orders);
 
         Assertions.assertEquals(할인_금액, 예상_할인금액);
     }

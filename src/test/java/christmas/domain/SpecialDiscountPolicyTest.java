@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.policy.DiscountPolicy;
 import christmas.domain.policy.SpecialDiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,9 +19,9 @@ public class SpecialDiscountPolicyTest {
         String 주문 = "크리스마스파스타-2,제로콜라-2";
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(주문);
-        SpecialDiscountPolicy specialDiscountPolicy = new SpecialDiscountPolicy();
+        DiscountPolicy discountPolicy = new SpecialDiscountPolicy();
 
-        int 할인_금액 = specialDiscountPolicy.discount(visitDate, orders);
+        int 할인_금액 = discountPolicy.discount(visitDate, orders);
 
         Assertions.assertEquals(할인_금액, 예상_할인_금액);
     }

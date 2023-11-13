@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.policy.DdayDiscountPolicy;
+import christmas.domain.policy.DiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -23,9 +24,9 @@ public class DdayDiscountPolicyTest {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2";
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(주문);
-        DdayDiscountPolicy ddayDiscountPolicy = new DdayDiscountPolicy();
+        DiscountPolicy discountPolicy = new DdayDiscountPolicy();
 
-        int 할인_금액 = ddayDiscountPolicy.discount(visitDate, orders);
+        int 할인_금액 = discountPolicy.discount(visitDate, orders);
 
         Assertions.assertEquals(할인_금액, 예상_할인_금액);
     }
@@ -36,9 +37,9 @@ public class DdayDiscountPolicyTest {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2";
         VisitDate visitDate = new VisitDate(방문_날짜);
         Orders orders = new Orders(주문);
-        DdayDiscountPolicy ddayDiscountPolicy = new DdayDiscountPolicy();
+        DiscountPolicy discountPolicy = new DdayDiscountPolicy();
 
-        int 할인_금액 = ddayDiscountPolicy.discount(visitDate, orders);
+        int 할인_금액 = discountPolicy.discount(visitDate, orders);
 
         Assertions.assertEquals(할인_금액, 예상_할인_금액);
     }
