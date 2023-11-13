@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.utils.ErrorMessages.INVALID_ORDER;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -45,5 +46,18 @@ public class OrdersTest {
         Assertions.assertThatThrownBy(() -> new Orders(초과_주문_입력))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_ORDER);
+    }
+
+    @Test
+    void 총_주문금액을_계산한다() {
+        // given
+        String 주문 = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1";
+        Orders orders = new Orders(주문);
+
+        // when
+        int 총_주문금액 = orders.총_주문금액_계산();
+
+        // then
+        assertEquals(총_주문금액, 142000);
     }
 }
