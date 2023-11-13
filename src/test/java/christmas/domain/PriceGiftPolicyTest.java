@@ -19,9 +19,9 @@ public class PriceGiftPolicyTest {
         Orders orders = new Orders(주문);
         GiftPolicy giftPolicy = new PriceGiftPolicy();
 
-        boolean 증정_여부 = giftPolicy.canGive(orders);
+        int 증정_개수 = giftPolicy.calculateGiftQuantity(orders);
 
-        Assertions.assertTrue(증정_여부);
+        Assertions.assertEquals(증정_개수, 1);
     }
 
     @ParameterizedTest
@@ -30,8 +30,8 @@ public class PriceGiftPolicyTest {
         Orders orders = new Orders(주문);
         GiftPolicy giftPolicy = new PriceGiftPolicy();
 
-        boolean 증정_여부 = giftPolicy.canGive(orders);
+        int 증정_개수 = giftPolicy.calculateGiftQuantity(orders);
 
-        Assertions.assertFalse(증정_여부);
+        Assertions.assertEquals(증정_개수, 0);
     }
 }
