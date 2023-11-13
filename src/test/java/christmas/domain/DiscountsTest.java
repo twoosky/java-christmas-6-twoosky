@@ -25,27 +25,20 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class DiscountsTest {
 
-    /**
-     * GIVEN 방문 날짜와 주문을 입력한다.
-     *       할인 정책에 따른 할인 객체 리스트를 생성한다.
-     * WHEN  각 할인 정책의 할인 금액을 합한다.
-     * THEN  할인 정책의 총합을 비교한다.
-     */
-
-    void 할인금액의_총합을_계산한다() {
-        // given
+    @ParameterizedTest
+    @CsvSource(value = {"10:6946", "23:7246", "31:5046"}, delimiter = ':')
+    void 할인금액의_총합을_계산한다(int 방문_날짜, int 예상_할인금액_총합) {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
-        VisitDate 방문_날짜 = new VisitDate(10);
-        Orders 주문_목록 = new Orders(주문);
+        VisitDate visitDate = new VisitDate(방문_날짜);
+        Orders orders = new Orders(주문);
+        Discounts discounts = new Discounts(할인정책에_따른_할인객체_리스트_생성());
 
-        // when
-        int 할인_금액 = 할인_객체.할인(방문_날짜, 주문_목록);
+        int 할인금액_총합 = discounts.calculateTotalDiscount(visitDate, orders);
 
-        // then
-        Assertions.assertEquals(할인_금액, 4046);
+        Assertions.assertEquals(할인금액_총합, 예상_할인금액_총합);
     }
 
-    private static List<Discount> 할인정책에_따른_할인객체_리스트_생성 () {
+    private List<Discount> 할인정책에_따른_할인객체_리스트_생성() {
         return List.of(
                 new Discount(CHRISTMAS_DDAY, new DdayDiscountPolicy()),
                 new Discount(SPECIAL, new SpecialDiscountPolicy()),
