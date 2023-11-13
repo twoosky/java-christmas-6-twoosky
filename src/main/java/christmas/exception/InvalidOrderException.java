@@ -1,6 +1,6 @@
-package christmas.utils;
+package christmas.exception;
 
-import static christmas.utils.ErrorMessages.INVALID_ORDER;
+import static christmas.exception.ErrorMessages.INVALID_ORDER;
 
 public class InvalidOrderException extends IllegalArgumentException {
     public InvalidOrderException() {

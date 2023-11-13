@@ -1,6 +1,6 @@
-package christmas.utils;
+package christmas.exception;
 
-import static christmas.utils.ErrorMessages.INVALID_DATE;
+import static christmas.exception.ErrorMessages.INVALID_DATE;
 
 public class InvalidDateException extends IllegalArgumentException {
     public InvalidDateException() {

@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.utils.ErrorMessages.INVALID_ORDER;
+import static christmas.exception.ErrorMessages.INVALID_ORDER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.assertj.core.api.Assertions;

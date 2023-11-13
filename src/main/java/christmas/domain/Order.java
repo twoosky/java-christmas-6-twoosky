@@ -1,9 +1,9 @@
 package christmas.domain;
 
-import static christmas.utils.ErrorMessages.INVALID_ORDER;
+import static christmas.exception.ErrorMessages.INVALID_ORDER;
 
 import christmas.utils.IntegerConverter;
-import christmas.utils.InvalidOrderException;
+import christmas.exception.InvalidOrderException;
 
 public class Order {
     public static final int MIN_ORDER_QUANTITY = 1;

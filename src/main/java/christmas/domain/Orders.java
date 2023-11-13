@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.utils.InvalidOrderException;
+import christmas.exception.InvalidOrderException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;

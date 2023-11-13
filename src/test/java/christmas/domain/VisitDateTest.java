@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.utils.ErrorMessages.INVALID_DATE;
+import static christmas.exception.ErrorMessages.INVALID_DATE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.DayOfWeek;

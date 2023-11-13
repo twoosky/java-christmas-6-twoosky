@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.utils.InvalidDateException;
+import christmas.exception.InvalidDateException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

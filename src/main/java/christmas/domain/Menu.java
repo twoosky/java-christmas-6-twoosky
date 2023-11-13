@@ -5,7 +5,7 @@ import static christmas.domain.MenuType.DESSERT;
 import static christmas.domain.MenuType.DRINK;
 import static christmas.domain.MenuType.MAIN;
 
-import christmas.utils.InvalidOrderException;
+import christmas.exception.InvalidOrderException;
 import java.util.Arrays;
 
 public enum Menu {
