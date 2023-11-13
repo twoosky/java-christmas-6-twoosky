@@ -37,4 +37,12 @@ public class VisitDate {
     public boolean isEqualsDate(int date) {
         return this.date == date;
     }
+
+    public boolean isNotAfter(int date) {
+        return this.date <= date;
+    }
+
+    public int calculateDiscount(int discountAmount) {
+        return (date - 1) * discountAmount;
+    }
 }
