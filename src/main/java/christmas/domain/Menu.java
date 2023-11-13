@@ -46,6 +46,10 @@ public enum Menu {
         return this.type == DRINK;
     }
 
+    public boolean isDesertMenu() {
+        return this.type == DESSERT;
+    }
+
     public int calculatePrice(int quantity) {
         return this.price * quantity;
     }

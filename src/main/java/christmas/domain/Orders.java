@@ -84,4 +84,11 @@ public class Orders {
                 .mapToInt(Order::calculateOrderPrice)
                 .sum();
     }
+
+    public int sumDesertOrderQuantity() {
+        return orders.stream()
+                .filter(Order::isDesertOrder)
+                .mapToInt(Order::getQuantity)
+                .sum();
+    }
 }

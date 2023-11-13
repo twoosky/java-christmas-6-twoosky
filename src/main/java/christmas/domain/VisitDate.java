@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.exception.InvalidDateException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.List;
 
 public class VisitDate {
     private static final int YEAR = 2023;
@@ -26,5 +27,10 @@ public class VisitDate {
     public DayOfWeek getDayOfWeek() {
         LocalDate localDate = LocalDate.of(YEAR, MONTH, date);
         return localDate.getDayOfWeek();
+    }
+
+    public boolean isContainDayOfDay(List<DayOfWeek> weekDay) {
+        DayOfWeek dayOfWeek = getDayOfWeek();
+        return weekDay.contains(dayOfWeek);
     }
 }
