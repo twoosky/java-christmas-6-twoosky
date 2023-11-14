@@ -1,40 +1,25 @@
 package christmas.domain;
 
 import static christmas.domain.GiftType.CHAMPAGNE;
-import static christmas.domain.GiftType.NONE;
 
-import christmas.domain.policy.gift.GiftPolicy;
-import christmas.domain.policy.gift.PriceGiftPolicy;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Gift 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GiftTest {
 
     @ParameterizedTest
-    @MethodSource("주문_증정정책_예상증정가격_제공")
-    void 증정_정책에_따라_증정_가격을_계산한다(String 주문, int 예상_증정_가격) {
-        Orders orders = new Orders(주문);
-        GiftPolicy giftPolicy = new PriceGiftPolicy();
-        Gift gift = new Gift(CHAMPAGNE, giftPolicy);
+    @CsvSource(value = {"1:25000", "2:50000", "3:75000"}, delimiter = ':')
+    void 증정_개수에_따라_증정_가격을_계산한다(int 증정_개수, int 예상_증정_가격) {
+        Gift gift = new Gift(CHAMPAGNE, 증정_개수);
 
-        int 증정_가격 = gift.calculatePrice(orders);
+        int 증정_가격 = gift.calculatePrice();
 
         Assertions.assertEquals(증정_가격, 예상_증정_가격);
-    }
-
-    private static Stream<Arguments> 주문_증정정책_예상증정가격_제공() {
-        return Stream.of(
-                Arguments.of("티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1", 25000),
-                Arguments.of("크리스마스파스타-1,시저샐러드-1,양송이수프-1,아이스크림-2", 0),
-                Arguments.of("바비큐립-2,해산물파스타-1,제로콜라-3", 25000)
-        );
     }
 }

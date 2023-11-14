@@ -2,33 +2,35 @@ package christmas.domain;
 
 import static christmas.domain.GiftType.CHAMPAGNE;
 
-import christmas.domain.policy.gift.PriceGiftPolicy;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("Gifts 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class GiftsTest {
 
-    @ParameterizedTest
-    @CsvSource(value= {"티본스테이크-2,시저샐러드-2:25000", "티본스테이크-1,시저샐러드-2:0"}, delimiter = ':')
-    void 총_증정_금액을_계산한다(String 주문, int 예상_증정금액_총합) {
-        Orders orders = new Orders(주문);
-        Gifts gifts = new Gifts(증정정책에_따른_증정객체_리스트_생성());
+    @Test
+    void 총_증정_금액을_계산한다() {
+        List<Gift> 증정_리스트 = List.of(new Gift(CHAMPAGNE, 1));
+        Gifts gifts = new Gifts(증정_리스트);
 
-        int 증정금액_총합 = gifts.sumPrice(orders);
+        int 증정금액_총합 = gifts.sumPrice();
 
-        Assertions.assertEquals(증정금액_총합, 예상_증정금액_총합);
+        Assertions.assertEquals(증정금액_총합, 25000);
     }
 
-    private static List<Gift> 증정정책에_따른_증정객체_리스트_생성() {
-        return List.of(
-                new Gift(CHAMPAGNE, new PriceGiftPolicy())
-        );
+    @Test
+    void 증정_내역을_반환한다() {
+        List<Gift> 증정_리스트 = List.of(new Gift(CHAMPAGNE, 1));
+        Gifts gifts = new Gifts(증정_리스트);
+
+        Map<GiftType, Integer> 할인_내역 = gifts.getResult();
+
+        Assertions.assertEquals(할인_내역.size(), 1);
     }
 }
