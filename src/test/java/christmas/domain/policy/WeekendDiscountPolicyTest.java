@@ -1,6 +1,8 @@
-package christmas.domain;
+package christmas.domain.policy;
 
 
+import christmas.domain.Orders;
+import christmas.domain.VisitDate;
 import christmas.domain.policy.discount.DiscountPolicy;
 import christmas.domain.policy.discount.WeekendDiscountPolicy;
 import java.util.stream.Stream;

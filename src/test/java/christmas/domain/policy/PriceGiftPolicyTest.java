@@ -1,5 +1,6 @@
-package christmas.domain;
+package christmas.domain.policy;
 
+import christmas.domain.Orders;
 import christmas.domain.policy.gift.GiftPolicy;
 import christmas.domain.policy.gift.PriceGiftPolicy;
 import org.junit.jupiter.api.Assertions;
