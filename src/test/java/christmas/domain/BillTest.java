@@ -18,14 +18,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Event 클래스")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-public class BenefitTest {
-    private static Benefit benefit;
+public class BillTest {
+    private static Bill bill;
 
     @BeforeEach
     void setUp() {
         Discounts discounts = new Discounts(할인객체_리스트_생성());
         Gifts gifts = new Gifts(증정객체_리스트_생성());
-        benefit = new Benefit(discounts, gifts);
+        bill = new Bill(discounts, gifts);
     }
 
     private List<Discount> 할인객체_리스트_생성() {
@@ -48,7 +48,7 @@ public class BenefitTest {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(주문);
 
-        int 혜택금액_총합 = benefit.getTotalBenefit(orders);
+        int 혜택금액_총합 = bill.getTotalBenefit(orders);
 
         Assertions.assertEquals(혜택금액_총합, 33_446);
     }
@@ -58,7 +58,7 @@ public class BenefitTest {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(주문);
 
-        int 혜택금액_총합 = benefit.getTotalDiscount(orders);
+        int 혜택금액_총합 = bill.getTotalDiscount(orders);
 
         Assertions.assertEquals(혜택금액_총합, 8_446);
     }
@@ -68,7 +68,7 @@ public class BenefitTest {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(주문);
 
-        int 혜택금액_총합 = benefit.getPaymentAfterDiscount(orders);
+        int 혜택금액_총합 = bill.getDiscountPrice(orders);
 
         Assertions.assertEquals(혜택금액_총합, 194_554);
     }
@@ -78,7 +78,7 @@ public class BenefitTest {
     void 총_주문금액이_10000원보다_작으면_혜택_금액으로_0을_반환한다(String 주문) {
         Orders orders = new Orders(주문);
 
-        int 혜택금액_총합 = benefit.getTotalBenefit(orders);
+        int 혜택금액_총합 = bill.getTotalBenefit(orders);
 
         Assertions.assertEquals(혜택금액_총합, 0);
     }
@@ -88,7 +88,7 @@ public class BenefitTest {
     void 총_주문금액이_10000원보다_작으면_할인_금액으로_0을_반환한다(String 주문) {
         Orders orders = new Orders(주문);
 
-        int 혜택금액_총합 = benefit.getTotalDiscount(orders);
+        int 혜택금액_총합 = bill.getTotalDiscount(orders);
 
         Assertions.assertEquals(혜택금액_총합, 0);
     }

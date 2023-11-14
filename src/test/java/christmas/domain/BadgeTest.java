@@ -18,7 +18,7 @@ public class BadgeTest {
     @ParameterizedTest
     @CsvSource(value = {"1000:없음", "5000:별", "10000:트리", "20000:산타"}, delimiter = ':')
     void 혜택금액에_따라_배지이름을_반환한다(int 혜택금액, String 예상_배지_이름) {
-        String 배지_이름 = Badge.getNameByBenefitAmount(혜택금액);
+        String 배지_이름 = Badge.getNameByBenefit(혜택금액);
 
         Assertions.assertEquals(배지_이름, 예상_배지_이름);
     }
@@ -26,7 +26,7 @@ public class BadgeTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, -1000, -10000})
     void 혜택금액에_대한_배지가_없는_경우_예외를_던진다(int 혜택금액) {
-        assertThatThrownBy(() -> Badge.getNameByBenefitAmount(혜택금액))
+        assertThatThrownBy(() -> Badge.getNameByBenefit(혜택금액))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining(NOT_EXISTS_BADGE);
     }

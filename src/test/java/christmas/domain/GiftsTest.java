@@ -29,7 +29,7 @@ public class GiftsTest {
         List<Gift> 증정_리스트 = List.of(new Gift(CHAMPAGNE, 1));
         Gifts gifts = new Gifts(증정_리스트);
 
-        Map<GiftType, Integer> 할인_내역 = gifts.getResult();
+        Map<String, Integer> 할인_내역 = gifts.getResult();
 
         Assertions.assertEquals(할인_내역.size(), 1);
     }
