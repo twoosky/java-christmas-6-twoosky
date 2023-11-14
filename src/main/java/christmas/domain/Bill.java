@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.EventsDto;
 import java.util.function.Supplier;
 
 public class Event {
@@ -24,6 +25,10 @@ public class Event {
 
     public int getPaymentAfterDiscount(VisitDate visitDate, Orders orders) {
         return orders.getTotalPrice() - discounts.sumDiscount(visitDate, orders);
+    }
+
+    public EventsDto getDiscountsResult() {
+
     }
 
     private int sumBenefit(VisitDate visitDate, Orders orders) {
