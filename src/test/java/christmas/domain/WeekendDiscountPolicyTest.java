@@ -17,11 +17,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class WeekendDiscountPolicyTest {
 
-    /**
-     * GIVEN 토요일에 방문한다. 메인메뉴가 포함된 메뉴를 주문한다.
-     * WHEN  주말 할인 금액을 계산한다.
-     * THEN  메인 메뉴 개수만큼 할인 금액이 계산된다.
-     */
     @ParameterizedTest
     @MethodSource("주문_방문날짜_예상할인금액_제공")
     void 금요일_토요일에_메인메뉴를_개당_2023원_할인한다(String 주문, int 방문_날짜, int 예상_할인금액) {

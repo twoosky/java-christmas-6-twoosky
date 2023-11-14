@@ -26,13 +26,10 @@ public class DiscountTest {
     @ParameterizedTest
     @MethodSource("할인종류_할인정책_할인금액_제공")
     void 할인금액을_반환한다(DiscountType 할인_종류, DiscountPolicy 할인_정책, int 예상_할인_금액) {
-        // given
         Discount discount = new Discount(할인_종류, 1000);
 
-        // when
         int 할인_금액 = discount.getAmount();
 
-        // then
         Assertions.assertEquals(할인_금액, 1000);
     }
 

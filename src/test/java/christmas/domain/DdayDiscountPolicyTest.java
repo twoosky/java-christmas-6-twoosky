@@ -13,11 +13,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class DdayDiscountPolicyTest {
 
-    /**
-     * GIVEN 크리스마스 당일에 방문한다.
-     * WHEN  크리스마스 디데이 할인 금액을 계산한다.
-     * THEN  3400원 할인된다.
-     */
     @ParameterizedTest
     @CsvSource(value = {"25:3400", "1:1000", "15:2400"}, delimiter = ':')
     void 크리스마스_디데이만큼_100원씩_추가_할인한다(int 방문_날짜, int 예상_할인_금액) {
