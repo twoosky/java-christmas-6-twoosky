@@ -31,5 +31,12 @@ public class OutputView {
         System.out.println(price);
     }
 
+    public void printGifts(GiftsDto dto) {
+        System.out.printf(OUTPUT_GIFT_LIST);
+        dto.gifts().entrySet().forEach(this::printGift);
+    }
 
+    private void printGift(Entry<String, Integer> gift) {
+        System.out.printf(OUTPUT_GIFT, gift.getKey(), gift.getValue());
+    }
 }
