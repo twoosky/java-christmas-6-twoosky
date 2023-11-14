@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import java.util.Map;
-
 public class Gift {
     private final GiftType type;
     private final int quantity;
@@ -12,16 +10,18 @@ public class Gift {
     }
 
     public int calculatePrice() {
-        return type.getPrice() * quantity;
+        return type.calculatePrice(quantity);
     }
 
-    public void addResult(Map<GiftType, Integer> result) {
-        if (isGiven()) {
-            result.put(type, quantity);
-        }
-    }
-
-    private boolean isGiven() {
+    public boolean isGiven() {
         return quantity != 0;
+    }
+
+    public String getGiftName() {
+        return type.getName();
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }

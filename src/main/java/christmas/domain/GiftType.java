@@ -1,7 +1,7 @@
 package christmas.domain;
 
 public enum GiftType {
-    CHAMPAGNE("샴페인", 25000);
+    CHAMPAGNE("샴페인", 25_000);
 
     private final String name;
     private final int price;
@@ -11,7 +11,11 @@ public enum GiftType {
         this.price = price;
     }
 
-    public int getPrice() {
-        return price;
+    public int calculatePrice(int quantity) {
+        return this.price * quantity;
+    }
+
+    public String getName() {
+        return name;
     }
 }
