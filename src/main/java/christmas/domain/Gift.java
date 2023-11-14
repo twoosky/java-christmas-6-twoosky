@@ -1,21 +1,27 @@
 package christmas.domain;
 
-import christmas.domain.policy.gift.GiftPolicy;
+import java.util.Map;
 
 public class Gift {
     private final GiftType type;
-    private final GiftPolicy policy;
+    private final int quantity;
 
-    public Gift(GiftType type, GiftPolicy policy) {
+    public Gift(GiftType type, int quantity) {
         this.type = type;
-        this.policy = policy;
+        this.quantity = quantity;
     }
 
-    public int calculatePrice(Orders orders) {
-        return type.getPrice() * getQuantity(orders);
+    public int calculatePrice() {
+        return type.getPrice() * quantity;
     }
 
-    private int getQuantity(Orders orders) {
-        return policy.calculateGiftQuantity(orders);
+    public void addResult(Map<GiftType, Integer> result) {
+        if (isGiven()) {
+            result.put(type, quantity);
+        }
+    }
+
+    private boolean isGiven() {
+        return quantity != 0;
     }
 }
