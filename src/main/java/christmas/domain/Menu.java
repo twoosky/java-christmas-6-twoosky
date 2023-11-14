@@ -49,5 +49,9 @@ public enum Menu {
     public int calculatePrice(int quantity) {
         return this.price * quantity;
     }
+
+    public String getName() {
+        return name;
+    }
 }
 

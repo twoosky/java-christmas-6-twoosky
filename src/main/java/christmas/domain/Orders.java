@@ -1,8 +1,12 @@
 package christmas.domain;
 
+import christmas.dto.OrdersDto;
 import christmas.exception.InvalidOrderException;
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Orders {
@@ -90,5 +94,12 @@ public class Orders {
                 .filter(order -> order.isEqualsMenuType(type))
                 .mapToInt(Order::getQuantity)
                 .sum();
+    }
+
+    public OrdersDto getOrders() {
+        Map<String, Integer> result = orders.stream()
+                .collect(Collectors.toUnmodifiableMap(Order::getMenuName, Order::getQuantity));
+
+        return new OrdersDto(result);
     }
 }
