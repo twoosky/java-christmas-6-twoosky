@@ -1,16 +1,15 @@
 package christmas.domain;
 
-import christmas.dto.BillDto;
 import java.util.function.Supplier;
 
-public class Bill {
+public class Benefit {
     public static final int MINIMUM_ORDERS_PRICE = 10000;
     public static final int EVENT_NOT_APPLIED_AMOUNT = 0;
 
     private final Discounts discounts;
     private final Gifts gifts;
 
-    public Bill(Discounts discounts, Gifts gifts) {
+    public Benefit(Discounts discounts, Gifts gifts) {
         this.discounts = discounts;
         this.gifts = gifts;
     }
@@ -25,10 +24,6 @@ public class Bill {
 
     public int getPaymentAfterDiscount(Orders orders) {
         return orders.getTotalPrice() - discounts.sumDiscount();
-    }
-
-    public BillDto toDto() {
-        return new BillDto(discounts.getResult(), gifts.getResult());
     }
 
     private int sumBenefit() {
