@@ -9,7 +9,7 @@
    - [x]  `[예외]` 중복 메뉴를 입력한 경우, IllegalArgumentException
    - [x]  `[예외]` 메뉴판에 없는 메뉴를 입력한 경우, IllegalArgumentException
    - [x]  `[예외]` 음료만 주문한 경우, IllegalArgumentException
-   - [x]  `[예외`  메뉴의 개수가 숫자가 아닌 경우, IllegalArgumentException
+   - [x]  `[예외]`  메뉴의 개수가 숫자가 아닌 경우, IllegalArgumentException
    - [x]  `[예외]` 각 메뉴의 개수가 1보다 작은 경우, IllegalArgumentException
    - [x]  `[예외]` 메뉴 총 개수가 20보다 큰 경우, IllegalArgumentException
    - [x]  IllegalArgumentException 발생 시 “[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.” 에러 메시지를 출력 후 재입력 받는다.
