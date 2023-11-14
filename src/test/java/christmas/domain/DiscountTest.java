@@ -25,18 +25,15 @@ public class DiscountTest {
 
     @ParameterizedTest
     @MethodSource("할인종류_할인정책_할인금액_제공")
-    void 각_할인정책에_따라_주문에_대한_할인금액을_반환한다(DiscountType 할인_종류, DiscountPolicy 할인_정책, int 예상_할인_금액) {
+    void 할인금액을_반환한다(DiscountType 할인_종류, DiscountPolicy 할인_정책, int 예상_할인_금액) {
         // given
-        String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
-        VisitDate visitDate = new VisitDate(10);
-        Orders orders = new Orders(주문);
-        Discount discount = new Discount(할인_종류, 할인_정책);
+        Discount discount = new Discount(할인_종류, 1000);
 
         // when
-        int 할인_금액 = discount.discount(visitDate, orders);
+        int 할인_금액 = discount.getAmount();
 
         // then
-        Assertions.assertEquals(할인_금액, 예상_할인_금액);
+        Assertions.assertEquals(할인_금액, 1000);
     }
 
     private static Stream<Arguments> 할인종류_할인정책_할인금액_제공() {
