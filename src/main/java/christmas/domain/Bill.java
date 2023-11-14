@@ -1,15 +1,17 @@
 package christmas.domain;
 
+import christmas.dto.BenefitDto;
+import christmas.dto.GiftsDto;
 import java.util.function.Supplier;
 
-public class Benefit {
+public class Bill {
     public static final int MINIMUM_ORDERS_PRICE = 10000;
     public static final int EVENT_NOT_APPLIED_AMOUNT = 0;
 
     private final Discounts discounts;
     private final Gifts gifts;
 
-    public Benefit(Discounts discounts, Gifts gifts) {
+    public Bill(Discounts discounts, Gifts gifts) {
         this.discounts = discounts;
         this.gifts = gifts;
     }
@@ -22,8 +24,20 @@ public class Benefit {
         return getAmount(this::sumBenefit, orders);
     }
 
-    public int getPaymentAfterDiscount(Orders orders) {
+    public int getDiscountPrice(Orders orders) {
         return orders.getTotalPrice() - discounts.sumDiscount();
+    }
+
+    public GiftsDto getGiftDto() {
+        return new GiftsDto(gifts.getResult());
+    }
+
+    public BenefitDto getBenefitDto() {
+        return new BenefitDto(discounts.getResult(), gifts.sumPrice());
+    }
+
+    public String getBadgeName() {
+        return Badge.getNameByBenefit(sumBenefit());
     }
 
     private int sumBenefit() {

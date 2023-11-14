@@ -19,7 +19,7 @@ public enum Badge {
         this.minimumAmount = minimumAmount;
     }
 
-    public static String getNameByBenefitAmount(int amount) {
+    public static String getNameByBenefit(int amount) {
         return from(amount).name;
     }
 
