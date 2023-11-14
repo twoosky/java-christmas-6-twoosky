@@ -1,7 +1,6 @@
 package christmas.domain;
 
-import static christmas.exception.ErrorMessages.NOT_EXISTS_BADGE;
-
+import christmas.exception.NotExistsBadgeException;
 import java.util.Arrays;
 
 public enum Badge {
@@ -27,7 +26,7 @@ public enum Badge {
         return Arrays.stream(Badge.values())
                 .filter(badge -> badge.isGreaterThan(amount))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException(NOT_EXISTS_BADGE));
+                .orElseThrow(NotExistsBadgeException::new);
     }
 
     private boolean isGreaterThan(int benefitAmount) {
