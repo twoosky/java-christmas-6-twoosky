@@ -16,10 +16,6 @@ public class Bill {
         this.gifts = gifts;
     }
 
-    public int getTotalDiscount(Orders orders) {
-        return getAmount(discounts::sumDiscount, orders);
-    }
-
     public int getTotalBenefit(Orders orders) {
         return getAmount(this::sumBenefit, orders);
     }

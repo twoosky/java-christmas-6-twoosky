@@ -54,16 +54,6 @@ public class BillTest {
     }
 
     @Test
-    void 할인_이벤트에_대한_할인_금액_합계를_계산한다() {
-        String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
-        Orders orders = new Orders(주문);
-
-        int 혜택금액_총합 = bill.getTotalDiscount(orders);
-
-        Assertions.assertEquals(혜택금액_총합, 8_446);
-    }
-
-    @Test
     void 할인_후_예상_결제금액을_계산한다() {
         String 주문 = "티본스테이크-2,레드와인-1,초코케이크-2,제로콜라-1";
         Orders orders = new Orders(주문);
@@ -79,16 +69,6 @@ public class BillTest {
         Orders orders = new Orders(주문);
 
         int 혜택금액_총합 = bill.getTotalBenefit(orders);
-
-        Assertions.assertEquals(혜택금액_총합, 0);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"타파스-1,제로콜라-1", "제로콜라-1,아이스크림-1", "시저샐러드-1"})
-    void 총_주문금액이_10000원보다_작으면_할인_금액으로_0을_반환한다(String 주문) {
-        Orders orders = new Orders(주문);
-
-        int 혜택금액_총합 = bill.getTotalDiscount(orders);
 
         Assertions.assertEquals(혜택금액_총합, 0);
     }
