@@ -1,8 +1,8 @@
 package christmas.domain;
 
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Discounts {
     private final List<Discount> discounts;
@@ -17,9 +17,9 @@ public class Discounts {
                 .sum();
     }
 
-    public Map<DiscountType, Integer> getResult() {
-        Map<DiscountType, Integer> result = new EnumMap<>(DiscountType.class);
-        discounts.forEach(discount -> discount.addResult(result));
-        return result;
+    public Map<String, Integer> getResult() {
+        return discounts.stream()
+                .filter(Discount::isDiscount)
+                .collect(Collectors.toUnmodifiableMap(Discount::getName, Discount::getAmount));
     }
 }

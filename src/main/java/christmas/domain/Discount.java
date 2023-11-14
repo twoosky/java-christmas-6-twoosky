@@ -11,17 +11,15 @@ public class Discount {
         this.amount = amount;
     }
 
+    public boolean isDiscount() {
+        return amount != 0;
+    }
+
     public int getAmount() {
         return amount;
     }
 
-    public void addResult(Map<DiscountType, Integer> result) {
-        if (isDiscounted()) {
-            result.put(type, amount);
-        }
-    }
-
-    private boolean isDiscounted() {
-        return amount != 0;
+    public String getName() {
+        return type.getName();
     }
 }
